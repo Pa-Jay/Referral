@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Setting;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -51,10 +52,11 @@ class RegisterController extends Controller
     {
 
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users,username'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
             'address' => 'required',
+            'ref_user_code' => ['nullable','string','exists:users,ref_code' ]
         ]);
     }
 
@@ -66,12 +68,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if ($data['ref_user_code']) {
+            $ref_user = User::where('ref_code', $data['ref_user_code'])->first();
+        }
+
         $ref_code = uniqid();
+        $initial_balance = Setting::where('name', 'initial_balance')->first()->value;
+
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'ref_code' => $ref_code,
+            'ref_user_id' => $ref_user->id,
+            'balance' => $initial_balance,
             'address' => $data['address']
         ]);
     }

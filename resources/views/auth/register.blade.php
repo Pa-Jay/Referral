@@ -1,9 +1,14 @@
+@php
+    if (isset($_GET['ref_code'])) {
+        $ref_code = $_GET['ref_code'];
+    }
+@endphp
 @extends('layouts.auth')
 @section('content')
 <div class="auth-form">
     <h4 class="text-center mb-4">Sign up your account</h4>
     @foreach ($errors->all() as $err)
-        <p class="text-danger">{{ $err }}</p>
+        <p class="text-danger text-center">{{ $err }}</p>
     @endforeach
     <form action="{{ route('register') }}" method="POST">@csrf
         <div class="form-group">
@@ -24,7 +29,7 @@
         </div>
         <div class="form-group">
             <label class="mb-1"><strong>Refferal code</strong></label>
-            <input type="text" class="form-control" name="ref_code" placeholder="">
+            <input type="text" class="form-control" value="{{ $ref_code ?? '' }}" name="ref_user_code" placeholder="">
         </div>
         <div class="text-center mt-4">
             <button type="submit" class="btn btn-primary btn-block">Sign me up</button>

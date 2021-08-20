@@ -3,7 +3,7 @@
 <div class="auth-form">
     <h4 class="text-center mb-4">Sign up your account</h4>
     @foreach ($errors->all() as $err)
-        <p class="text-danger">{{ $err }}</p>
+        <p class="text-danger text-center">{{ $err }}</p>
     @endforeach
     <form action="{{ route('login') }}" method="POST">@csrf
         <div class="form-group">

@@ -19,10 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/credit-ref', 'HomeController@creditRef')->name('home');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::prefix('user')->group(function () {
+Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', 'UserController@index')->name('user.home');
 });
 

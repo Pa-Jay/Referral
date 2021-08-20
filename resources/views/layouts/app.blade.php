@@ -123,11 +123,12 @@
                             <span class="nav-text">Profile</span>
                         </a>
                     </li>
-                    <li><a href="javascript:void()" aria-expanded="false">
+                    <li><a href="javascript:logout()" aria-expanded="false">
                             <i class="flaticon-381-exit"></i>
                             <span class="nav-text">Logout</span>
                         </a>
                     </li>
+                    <form action="{{ route('logout') }}" id="logout" method="post">@csrf</form>
                 </ul>
             </div>
         </div>
@@ -195,6 +196,10 @@
         function copy(text) {
             window.navigator.clipboard.writeText(text)
             swal('Yess!', 'Copied: ' + text, 'success')
+        }
+
+        function logout() {
+            $('#logout').submit()
         }
 
     </script>

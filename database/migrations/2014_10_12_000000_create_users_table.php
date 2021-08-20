@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('role')->default(0);
             $table->string('ref_code');
             $table->integer('ref_user_id')->nullable();
+            $table->integer('paid_ref')->default(0);
             $table->double('balance')->default(0);
             $table->rememberToken();
             $table->timestamps();
