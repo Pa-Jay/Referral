@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{{ env('APP_NAME') }} </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/d_assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/d_assets/images/logo.png">
     <link href="/d_assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -68,8 +68,9 @@
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
                 <img class="logo-abbr" src="/d_assets/images/logo.png" alt="">
-                <img class="logo-compact" src="/d_assets/images/logo-text.png" alt="">
-                <img class="brand-title" src="/d_assets/images/logo-text.png" alt="">
+                {{-- <img class="logo-compact" src="/d_assets/images/logo-text.png" alt=""> --}}
+                {{-- <img class="brand-title" src="/d_assets/images/logo-text.png" alt=""> --}}
+                <strong class="brand-title text-white">LTC Master Airdrop</strong>
             </a>
 
             <div class="nav-control">

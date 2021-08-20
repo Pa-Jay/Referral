@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title> {{ env('APP_NAME') }}  </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/d_assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/d_assets/images/logo.png">
     <link href="/d_assets/css/style.css" rel="stylesheet">
 
 </head>
