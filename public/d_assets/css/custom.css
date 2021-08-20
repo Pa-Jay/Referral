@@ -1,0 +1,22 @@
+.countdown-box
+{
+    background-image: url(/d_assets/images/card/4.png);
+    border-radius: 20px;
+    padding: 50px 20px !important;
+    color: black;
+}
+
+.time-box{
+    background-color: #f0f0f0;
+    padding: 25px;
+    border-radius: 20px;
+    font-size: 23px;
+    font-weight: bolder;
+    margin-right: 20px;
+}
+
+.seperator{
+    color: white;
+    padding-top: 30px;
+    margin-right: 20px;
+}

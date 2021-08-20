@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::prefix('user')->group(function () {
-    Route::get('/user', 'UserController@index')->name('user.home');
+    Route::get('/', 'UserController@index')->name('user.home');
 });
 
 Route::prefix('admin')->group(function () {
