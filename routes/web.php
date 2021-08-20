@@ -25,6 +25,8 @@ Auth::routes(['verify' => true]);
 
 Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', 'UserController@index')->name('user.home');
+    Route::get('/referrals', 'UserController@referrals')->name('user.referrals');
+    Route::view('/profile', 'user.profile')->name('user.profile');
 });
 
 Route::prefix('admin')->group(function () {

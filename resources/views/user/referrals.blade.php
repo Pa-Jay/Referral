@@ -5,59 +5,40 @@
     <div class="container-fluid">
         <div class="page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Referrals</a></li>
             </ol>
         </div>
         <div class="row">
-            @if ($notification)
-            <div class="col-md-12">
-                <div class="card card-body">
-                    <h5>{{ $notification->title }}</h5>
-                    <p>{{$notification->message}}</p>
-                </div>
-            </div>
-            @endif
-            <div class="col-xl-3 col-xxl-5 col-lg-5">
-                <div class="row">
-                    <div class="col-md-6 col-lg-12">
-                        <div class="card">
-                            <div class="card-body p-4">
-                                <div class="media align-items-center">
-                                    <div class="media-body">
-                                        <div class="d-flex align-items-center">
-                                            <h2 class="mb-0 mr-3 text-black font-w600">
-                                                {{ Auth::user()->referrals->count() }} Users</h2>
-                                        </div>
-                                        <p class="mb-0">Referrals</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-12">
-                        <div class="card overflow-hidden">
-                            <div class="card-header border-0 pb-0">
-                                <div>
-                                    <h3 class="mb-0 text-black font-w600">
-                                        ${{ number_format(Auth::user()->balance) }}</h3>
-                                    <p class="mb-1">Wallet Balance</p>
-                                </div>
-                            </div>
-                            <div class="card-body p-0  mt-widget">
-                                <canvas id="revenueChart" height="50"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-9 col-xxl-7 col-lg-7">
+            <div class="col-md-6">
                 <div class="card">
-                    <div class="card-body countdown-box ">
-                        <h4 class="text-white text-center mb-3">Countdown</h4>
-                        <Timer-component end="{{ $countdown }}"></Timer-component>
+                    <div class="card-body p-4">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <div class="d-flex align-items-center">
+                                    <h2 class="mb-0 mr-3 text-black font-w600">
+                                        {{ Auth::user()->referrals->count() }} Users</h2>
+                                </div>
+                                <p class="mb-0">Referrals</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="card overflow-hidden">
+                    <div class="card-header border-0 pb-0">
+                        <div>
+                            <h3 class="mb-0 text-black font-w600">
+                                ${{ number_format(Auth::user()->balance) }}</h3>
+                            <p class="mb-1">Wallet Balance</p>
+                        </div>
+                    </div>
+                    <div class="card-body p-0  mt-widget">
+                        <canvas id="revenueChart" height="50"></canvas>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-xl-12">
                 <div class="card bg-transparent shadow-none">
                     <div class="card-header pl-0 border-0  d-flex justify-content-between">
@@ -96,6 +77,7 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
+                                {{ $referrals->links() }}
                             </table>
                         </div>
                     </div>

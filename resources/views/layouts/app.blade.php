@@ -10,6 +10,9 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/d_assets/images/favicon.png">
     <link href="/d_assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <link rel="stylesheet" href="/d_assets/vendor/chartist/css/chartist.min.css">
     <link href="/d_assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/d_assets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
@@ -108,17 +111,17 @@
         <div class="deznav">
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li><a href="javascript:void()" aria-expanded="false">
+                    <li><a href="{{ route('user.home') }}" aria-expanded="false">
                             <i class="flaticon-381-networking"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
-                    <li><a href="javascript:void()" aria-expanded="false">
+                    <li><a href="{{ route('user.referrals') }}" aria-expanded="false">
                             <i class="flaticon-381-link"></i>
                             <span class="nav-text">Referrals</span>
                         </a>
                     </li>
-                    <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">
+                    <li><a href="{{ route('user.profile') }}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-381-settings-2"></i>
                             <span class="nav-text">Profile</span>
                         </a>
@@ -140,7 +143,9 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        @yield('content')
+        <div id="app">
+            @yield('content')
+        </div>
         <!--**********************************
             Content body end
         ***********************************-->
@@ -175,6 +180,8 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
     <script src="/d_assets/vendor/global/global.min.js"></script>
     <script src="/d_assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="/d_assets/vendor/chart.js/Chart.bundle.min.js"></script>
