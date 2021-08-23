@@ -69,7 +69,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if ($data['ref_user_code']) {
-            $ref_user = User::where('ref_code', $data['ref_user_code'])->first();
+            $ref_user_id = User::where('ref_code', $data['ref_user_code'])->first()->id;
+        }else {
+            $ref_user_id = null;
         }
 
         $ref_code = uniqid();
@@ -80,7 +82,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'ref_code' => $ref_code,
-            'ref_user_id' => $ref_user->id,
+            'ref_user_id' => $ref_user_id,
             'balance' => $initial_balance,
             'address' => $data['address']
         ]);
