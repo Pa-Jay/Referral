@@ -5,44 +5,15 @@
     <div class="container-fluid">
         <div class="page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Admin Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">All Users</a></li>
             </ol>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body p-4">
-                        <div class="media align-items-center">
-                            <div class="media-body">
-                                <div class="d-flex align-items-center">
-                                    <h2 class="mb-0 mr-3 text-black font-w600">
-                                        {{ $users->count() }} Users</h2>
-                                </div>
-                                <p class="mb-0">Total Users</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card overflow-hidden">
-                    <div class="card-header border-0 pb-0">
-                        <div>
-                            <h3 class="mb-0 text-black font-w600">
-                                ${{ number_format($wallet_balance) }}</h3>
-                            <p class="mb-1">Users' Wallet Balance</p>
-                        </div>
-                    </div>
-                    <div class="card-body p-0  mt-widget">
-                        <canvas id="revenueChart" height="50"></canvas>
-                    </div>
-                </div>
-            </div>
 
             <div class="col-xl-12">
                 <div class="card bg-transparent shadow-none">
                     <div class="card-header pl-0 border-0">
-                        <h4 class="card-title">Latest Users</h4>
+                        <h4 class="card-title">Users</h4>
                     </div>
                     <div class="card-body p-0 bg-white rounded shadow">
                         <div class="table-responsive">
@@ -57,7 +28,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users->take(10) as $user)
+                                    @foreach ($users as $user)
                                     <tr>
                                         <td>{{ $user->username }}</td>
                                         <td>{{ $user->email }}</td>

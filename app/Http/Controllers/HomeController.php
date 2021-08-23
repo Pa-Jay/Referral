@@ -25,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (Auth::user()->role == 6000) {
+            return redirect()->route('admin.home');
+        }
         return redirect()->route('user.home');
     }
 
@@ -51,6 +54,5 @@ class HomeController extends Controller
 
             return redirect()->route('user.home');
         }
-        dd('Shall we');
     }
 }

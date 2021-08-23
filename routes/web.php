@@ -29,6 +29,7 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
     Route::view('/profile', 'user.profile')->name('user.profile');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', 'AdminController@home')->name('admin.home');
+    Route::get('/users', 'AdminController@users')->name('admin.users');
 });
