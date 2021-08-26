@@ -33,4 +33,9 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', 'AdminController@home')->name('admin.home');
     Route::get('/users', 'AdminController@users')->name('admin.users');
+    Route::get('/settings', 'AdminController@settings')->name('admin.settings');
+    Route::post('/settings', 'AdminController@updateSettings')->name('admin.settings');
+    Route::post('/countdown', 'AdminController@updateCountdown')->name('admin.update-countdown');
+    Route::get('/withdrawals', 'AdminController@withdrawals')->name('admin.withdrawals');
+    Route::get('/confirm/{txn}', 'AdminController@confirmWithdraw')->name('withdraw.confirm');
 });

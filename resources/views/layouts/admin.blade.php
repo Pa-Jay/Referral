@@ -1,3 +1,7 @@
+@php
+$withdraws = App\WalletTxn::where(['status' => 'pending', 'type' => 'debit'])->count();
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,8 +122,19 @@
                         </a>
                     </li>
                     <li><a href="{{ route('admin.users') }}" aria-expanded="false">
-                            <i class="flaticon-381-link"></i>
+                            <i class="flaticon-381-user"></i>
                             <span class="nav-text">Users</span>
+                        </a>
+                    </li>
+                    <li><a href="{{ route('admin.settings') }}" aria-expanded="false">
+                            <i class="flaticon-381-settings"></i>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                    <li><a href="{{ route('admin.withdrawals') }}" aria-expanded="false">
+                            <i class="flaticon-381-link"></i>
+                            <span class="nav-text">Withdrawals <span
+                                    class="badge badge-light badge-circle">{{ $withdraws }}</span> </span>
                         </a>
                     </li>
                     <li><a href="javascript:logout()" aria-expanded="false">
@@ -206,6 +221,20 @@
         }
 
     </script>
+
+    @if (session('error'))
+    <script>
+        swal('Oops!', '{{ session("error") }}', 'error')
+
+    </script>
+    @endif
+
+    @if (session('success'))
+    <script>
+        swal('Great!!', '{{ session("success") }}', 'success')
+
+    </script>
+    @endif
 
 
 </body>

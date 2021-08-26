@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">All Users</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Pending Withdrawals</a></li>
             </ol>
         </div>
         <div class="row">
@@ -13,7 +13,7 @@
             <div class="col-xl-12">
                 <div class="card bg-transparent shadow-none">
                     <div class="card-header pl-0 border-0">
-                        <h4 class="card-title">Users</h4>
+                        <h4 class="card-title">Withdraws</h4>
                     </div>
                     <div class="card-body p-0 bg-white rounded shadow">
                         <div class="table-responsive">
@@ -22,23 +22,31 @@
                                     <tr>
                                         <th class="w-space-no">Username</th>
                                         <th class="w-space-no">Email</th>
-                                        <th class="w-space-no">Wallet Balance</th>
+                                        <th class="w-space-no">Refs</th>
+                                        <th class="w-space-no">Amount</th>
                                         <th class="w-space-no">Address</th>
                                         <th class="w-space-no">Date</th>
+                                        <th class="w-space-no">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($withdrawals as $txn)
                                     <tr>
-                                        <td>{{ $user->username }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>${{ number_format($user->balance) }}</td>
-                                        <td>{{ $user->address }}</td>
-                                        <td>{{ $user->created_at->diffForHumans() }}</td>
+                                        <td>{{ $txn->user->username }}</td>
+                                        <td>{{ $txn->user->email }}</td>
+                                        <td>{{ $txn->user->referrals->count() }}</td>
+                                        <td>${{ number_format($txn->amount) }}</td>
+                                        <td>{{ $txn->user->address }}</td>
+                                        <td>{{ $txn->created_at->format('d M Y, h:ia') }}</td>
+                                        <td>
+                                            <a href="{{ route('withdraw.confirm', $txn) }}">
+                                                <button class="btn btn-primary">Confirm</button>
+                                            </a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
-                                {{ $users->links() }}
+                                    {{ $withdrawals->links() }}
                             </table>
                         </div>
                     </div>

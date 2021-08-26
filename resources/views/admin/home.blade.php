@@ -38,6 +38,13 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body p-4">
+                       <timer-component end="{{ $countdown }}"></timer-component>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-xl-12">
                 <div class="card bg-transparent shadow-none">
