@@ -53,8 +53,21 @@
             <div class="col-xl-9 col-xxl-7 col-lg-7">
                 <div class="card">
                     <div class="card-body countdown-box ">
-                        <h4 class="text-white text-center mb-3">Countdown</h4>
-                        <Timer-component end="{{ $countdown }}"></Timer-component>
+                        @if (\Carbon\Carbon::parse($countdown)->isPast())
+
+                            @if (Auth::user()->referrals->count() > 3)
+                                <center class="my-5">
+                                    <h4 class="text-white text-center mb-3">Hurray!!!, You can now withdraw your bonus</h4>
+                                    <a href="{{ route('user.withdraw') }}"><button class="btn btn-primary  ">WITHDRAW</button></a>
+                                </center>
+                            @else
+                                <h4 class="text-white text-center mb-3">Oops!!, You did not refer up to 4 persons</h4>
+                            @endif
+
+                        @else
+                            <h4 class="text-white text-center mb-3">Refer 4 Persons before the countdown ends to withdraw your bonus</h4>
+                            <Timer-component end="{{ $countdown }}"></Timer-component>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -63,6 +76,7 @@
                     <div class="card-header pl-0 border-0  d-flex justify-content-between">
                         <h4 class="card-title">Referrals</h4>
                         <div class="col-10 col-md-5">
+                            @if (!\Carbon\Carbon::parse($countdown)->isPast())
                             <div class="input-group">
                                 <input type="text" value="{{ env('APP_URL').'/register/'. Auth::user()->ref_code }}"
                                     class="form-control ">
@@ -71,6 +85,7 @@
                                         onclick="copy(`{{ env('APP_URL').'/register/?ref_code='. Auth::user()->ref_code }}`)">Copy</button>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body p-0 bg-white rounded shadow">

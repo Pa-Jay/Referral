@@ -212,6 +212,18 @@
 
     </script>
 
+    @if (session('error'))
+    <script>
+        swal('Oops!', '{{ session("error") }}', 'error')
+    </script>
+    @endif
+
+    @if (session('success'))
+    <script>
+        swal('Great!!', '{{ session("success") }}', 'success')
+    </script>
+    @endif
+
 
 </body>
 

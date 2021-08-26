@@ -27,6 +27,7 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', 'UserController@index')->name('user.home');
     Route::get('/referrals', 'UserController@referrals')->name('user.referrals');
     Route::view('/profile', 'user.profile')->name('user.profile');
+    Route::get('/withdraw-funds', 'UserController@withdraw')->name('user.withdraw');
 });
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
